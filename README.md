@@ -18,7 +18,7 @@ workspace.
         └── <Repository contents>
 ```
 
-<p style="text-align: center;">Workspace directory tree with the project in it</p>
+<p align="center">Workspace directory tree with the project in it</p>
 
 ```bash
 git clone -b ros_pub_sub https://github.com/armgits/beginner_tutorials.git armgits_pub_sub
