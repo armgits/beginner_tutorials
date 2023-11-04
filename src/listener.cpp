@@ -27,7 +27,7 @@ public:
   : Node("normal_person")
   {
     subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "topic", 10, std::bind(&NormalPerson::topic_callback, this, _1));
+      "topic_flat_earth", 10, std::bind(&NormalPerson::topic_callback, this, _1));
   }
 
 private:
