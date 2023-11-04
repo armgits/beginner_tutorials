@@ -14,20 +14,20 @@ workspace.
 ├── install/
 ├── log/
 └── src/
-    └── armgits_pub_sub/ <-- Repository clones to this folder
+    └── beginner_tutorials/ <-- Repository clones to this folder
         └── <Repository contents>
 ```
 
 <p align="center">Workspace directory tree with this repository contents in it</p>
 
 ```bash
-git clone -b ros_pub_sub https://github.com/armgits/beginner_tutorials.git armgits_pub_sub
+git clone -b ros_pub_sub https://github.com/armgits/beginner_tutorials.git beginner_tutorials
 ```
 
 Navigate back to the root directory of your ROS2 workspace and build the package
 
 ```bash
-colcon build --packages-select armgits_pub_sub
+colcon build --packages-select beginner_tutorials
 ```
 
 Source the freshly built package
@@ -36,8 +36,8 @@ Source the freshly built package
 source install/setup.bash
 ```
 
-Run the publisher node on `armgits-topic`
+Switch to the `ros_pub_sub` branch of this repository
 
 ```bash
-ros2 run <todo executable name>
+git checkout ros_pub_sub
 ```
