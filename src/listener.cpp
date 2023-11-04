@@ -37,10 +37,13 @@ public:
 private:
   void listen_callback(const std_msgs::msg::String & msg) const
   {
-    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
-
     auto reply = std_msgs::msg::String();
     reply.data = "ALWAYS HAS BEEN...";
+
+    if (msg.data == reply.data)
+      return;
+
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
 
     RCLCPP_INFO(this->get_logger(), "And I said: '%s'", reply.data.c_str());
     publisher_->publish(reply);
