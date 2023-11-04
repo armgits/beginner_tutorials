@@ -27,7 +27,11 @@ public:
   : Node("normal_person")
   {
     subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "topic_flat_earth", 10, std::bind(&NormalPerson::topic_callback, this, _1));
+        "topic_flat_earth", 10, std::bind(&NormalPerson::topic_callback,
+         this, _1));
+
+    publisher_ = this->create_publisher<std_msgs::msg::String>(
+        "topic_flat_earth", 10);
   }
 
 private:
@@ -36,6 +40,7 @@ private:
     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
   }
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
 };
 
 int main(int argc, char * argv[])
