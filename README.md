@@ -2,19 +2,10 @@
 
 Abhishekh Reddy Munnangi, 119399002
 
-Nothing for now in the `main` branch.
+Nothing for now in the `main` branch. Check out the instructions below in the
+meanwhile in other branches for programming exercises.
 
-## Get started
+## Exercise 1 - Publisher/Subscriber
 
-Clone this repository to your favorite directory
-
-```bash
-git clone https://github.com/armgits/beginner_tutorials.git armgits_beginner_tutorials
-```
-### Exercise 1 - Publisher/Subscriber
-
-Switch to the `ros_pub_sub` branch of this repository
-
-```bash
-git checkout ros_pub_sub
-```
+See the [`ros_pub_sub`](https://github.com/armgits/beginner_tutorials/tree/ros_pub_sub)
+branch of this repository.
