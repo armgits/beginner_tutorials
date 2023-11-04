@@ -1,20 +1,43 @@
-# 808X ROS Programming Exercises
+# First Publisher/Subscriber
 
-Abhishekh Reddy Munnangi, 119399002
-
-Nothing for now in the `main` branch.
+ENPM808X - Abhishekh Reddy Munnangi, 119399002
 
 ## Get started
 
-Clone this repository to your favorite directory
+The root directory of this repository are contents of a ROS2 package. Hence,
+this needs to be cloned to a folder in the `src/` directory of a ROS2 project
+workspace.
 
-```bash
-git clone https://github.com/armgits/beginner_tutorials.git armgits_beginner_tutorials
+Project directory in a ROS2 workspace
+
+```console
+<your_ros2_workspace>/
+├── build/
+├── install/
+├── log/
+└── src/
+    └── armgits_pub_sub/ <-- Repository clones to this folder
+        └── <Repository contents>
 ```
-### Exercise 1 - Publisher/Subscriber
-
-Switch to the `ros_pub_sub` branch of this repository
 
 ```bash
-git checkout ros_pub_sub
+git clone -b ros_pub_sub https://github.com/armgits/beginner_tutorials.git armgits_pub_sub
+```
+
+Navigate back to the root directory of your ROS2 workspace and build the package
+
+```bash
+colcon build --packages-select armgits_pub_sub
+```
+
+Source the freshly built package
+
+```bash
+source install/setup.bash
+```
+
+Run the publisher node on `armgits-topic`
+
+```bash
+ros2 run <todo executable name>
 ```
