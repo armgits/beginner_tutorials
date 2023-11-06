@@ -25,12 +25,10 @@ using namespace std::chrono_literals;
 /* This example creates a subclass of Node and uses std::bind() to register a
  * member function as a callback from the timer. */
 
-class FlatEarther : public rclcpp::Node
-{
-public:
+class FlatEarther : public rclcpp::Node {
+ public:
   FlatEarther()
-  : Node("flat_earther"), count_(0)
-  {
+  : Node("flat_earther"), count_(0) {
     publisher_ = this->create_publisher<std_msgs::msg::String>(
         "topic_flat_earth", 10);
 
@@ -38,9 +36,8 @@ public:
         500ms, std::bind(&FlatEarther::timer_callback, this));
   }
 
-private:
-  void timer_callback()
-  {
+ private:
+  void timer_callback() {
     auto message = std_msgs::msg::String();
     message.data = "Wait, the earth's round? " + std::to_string(count_++);
 
@@ -55,8 +52,7 @@ private:
   size_t count_;
 };
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<FlatEarther>());
   rclcpp::shutdown();

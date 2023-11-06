@@ -20,12 +20,10 @@
 
 using std::placeholders::_1;
 
-class NormalPerson : public rclcpp::Node
-{
-public:
+class NormalPerson : public rclcpp::Node {
+ public:
   NormalPerson()
-  : Node("normal_person")
-  {
+  : Node("normal_person") {
     subscription_ = this->create_subscription<std_msgs::msg::String>(
         "topic_flat_earth", 10, std::bind(&NormalPerson::listen_callback,
          this, _1));
@@ -34,9 +32,8 @@ public:
         "topic_flat_earth", 10);
   }
 
-private:
-  void listen_callback(const std_msgs::msg::String & msg) const
-  {
+ private:
+  void listen_callback(const std_msgs::msg::String & msg) const {
     auto reply = std_msgs::msg::String();
     reply.data = "ALWAYS HAS BEEN...";
 
@@ -52,8 +49,7 @@ private:
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
 };
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<NormalPerson>());
   rclcpp::shutdown();
