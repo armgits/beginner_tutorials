@@ -69,4 +69,6 @@ Start the `listener` node in a new, second terminal
 ros2 run beginner_tutorials listener
 ```
 
+>**Note:** You might need to source the workspace in the new terminal as well before running the above command
+
 Hit `Crtl + C` in both the terminals to stop the nodes.
