@@ -40,7 +40,7 @@ workspace.
 Run this command in the `src/` directory of your ROS2 workspace
 
 ```bash
-git clone -b ros_pub_sub https://github.com/armgits/beginner_tutorials.git beginner_tutorials
+git clone https://github.com/armgits/beginner_tutorials.git beginner_tutorials
 ```
 
 Navigate back to the root directory of your ROS2 workspace and build the package
