@@ -15,9 +15,18 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 add_executable(talker src/talker.cpp)
-add_executable(listener src/listener.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
+target_include_directories(talker
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+
+add_executable(listener src/listener.cpp)
 ament_target_dependencies(listener rclcpp std_msgs)
+target_include_directories(listener
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
 
 install(TARGETS
   talker
