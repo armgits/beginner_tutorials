@@ -35,8 +35,6 @@ void SecondAstronaut::shoot() const {
   auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
   auto result = shoot_->async_send_request(request);
 
-  RCLCPP_INFO(this->get_logger(), "That's all for today folks...");
-
   rclcpp::shutdown();
 }
 
