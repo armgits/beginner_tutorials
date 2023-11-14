@@ -11,6 +11,8 @@ SecondAstronaut::SecondAstronaut()
 
   shoot_ = this->create_client<std_srvs::srv::Trigger>(
       "/first_astronaut/get_shot");
+
+  this->declare_parameter("dramatic_end", false);
 }
 
 void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
@@ -23,7 +25,8 @@ void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
   RCLCPP_INFO(this->get_logger(), reply.data.c_str());
   publisher_->publish(reply);
 
-  SecondAstronaut::shoot();
+  if (this->get_parameter("dramatic_end").as_bool())
+    SecondAstronaut::shoot();
 }
 
 void SecondAstronaut::shoot() const {
