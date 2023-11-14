@@ -20,7 +20,7 @@ void FirstAstronaut::timer_callback() {
   auto message = std_msgs::msg::String();
   message.data = this->get_parameter("realization").as_string() + " ";
 
-  RCLCPP_INFO(this->get_logger(), message.data.c_str());
+  RCLCPP_INFO_STREAM(this->get_logger(), message.data);
 
   publisher_->publish(message);
 }
@@ -30,7 +30,7 @@ void FirstAstronaut::get_shot_callback(
     std_srvs::srv::Trigger::Response::SharedPtr response) {
 
   if (request) {
-    RCLCPP_INFO(this->get_logger(), "Gets shot and dies...");
+    RCLCPP_FATAL(this->get_logger(), "Gets shot and dies...");
 
     response->set__success(true);
 

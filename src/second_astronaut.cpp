@@ -22,7 +22,7 @@ void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
   if (msg.data == reply.data)
     return;
 
-  RCLCPP_INFO(this->get_logger(), reply.data.c_str());
+  RCLCPP_WARN_STREAM(this->get_logger(), reply.data);
   publisher_->publish(reply);
 
   if (this->get_parameter("dramatic_end").as_bool())
@@ -30,10 +30,12 @@ void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
 }
 
 void SecondAstronaut::shoot() const {
-  RCLCPP_INFO(this->get_logger(), "Shoots...");
+  RCLCPP_ERROR(this->get_logger(), "Shoots...");
 
   auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
   auto result = shoot_->async_send_request(request);
+
+  RCLCPP_DEBUG(this->get_logger(), "That's all for today folks!");
 
   rclcpp::shutdown();
 }
