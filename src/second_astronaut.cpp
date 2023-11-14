@@ -17,7 +17,7 @@ void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
   if (msg.data == reply.data)
     return;
 
-  RCLCPP_INFO(this->get_logger(), "Astronaut 2: '%s'", reply.data.c_str());
+  RCLCPP_INFO(this->get_logger(), reply.data.c_str());
   publisher_->publish(reply);
 }
 
