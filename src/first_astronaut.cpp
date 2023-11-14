@@ -1,7 +1,7 @@
 #include "first_astronaut.hpp"
 
 FirstAstronaut::FirstAstronaut()
-    : Node("first_astronaut"), count_(0) {
+    : Node("first_astronaut") {
   publisher_ = this->create_publisher<std_msgs::msg::String>(
       "topic_flat_earth", 10);
 
@@ -11,7 +11,7 @@ FirstAstronaut::FirstAstronaut()
 
 void FirstAstronaut::timer_callback() {
   auto message = std_msgs::msg::String();
-  message.data = "Wait, the earth's round? " + std::to_string(count_++);
+  message.data = "Wait, the earth's round? ";
 
   RCLCPP_INFO(this->get_logger(), message.data.c_str());
 
