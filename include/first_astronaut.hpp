@@ -25,9 +25,9 @@ using namespace std::chrono_literals;
 
 /* This example creates a subclass of Node and uses std::bind() to register a
  * member function as a callback from the timer. */
-class FlatEarther : public rclcpp::Node {
+class FirstAstronaut : public rclcpp::Node {
  public:
-  FlatEarther();
+  FirstAstronaut();
 
  private:
   void timer_callback();

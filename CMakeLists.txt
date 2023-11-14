@@ -14,23 +14,23 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-add_executable(talker src/talker.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
-target_include_directories(talker
+add_executable(first_astronaut src/first_astronaut.cpp)
+ament_target_dependencies(first_astronaut rclcpp std_msgs)
+target_include_directories(first_astronaut
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
 
-add_executable(listener src/listener.cpp)
-ament_target_dependencies(listener rclcpp std_msgs)
-target_include_directories(listener
+add_executable(second_astronaut src/second_astronaut.cpp)
+ament_target_dependencies(second_astronaut rclcpp std_msgs)
+target_include_directories(second_astronaut
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
 
 install(TARGETS
-  talker
-  listener
+  first_astronaut
+  second_astronaut
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

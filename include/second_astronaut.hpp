@@ -21,9 +21,9 @@
 
 using std::placeholders::_1;
 
-class NormalPerson : public rclcpp::Node {
+class SecondAstronaut : public rclcpp::Node {
  public:
-  NormalPerson();
+  SecondAstronaut();
 
  private:
   void listen_callback(const std_msgs::msg::String & msg) const;
