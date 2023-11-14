@@ -20,6 +20,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "std_srvs/srv/trigger.hpp"
 
 using namespace std::chrono_literals;
 
@@ -31,6 +32,8 @@ class FirstAstronaut : public rclcpp::Node {
 
  private:
   void timer_callback();
+  void die();
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr get_shot_;
 };
