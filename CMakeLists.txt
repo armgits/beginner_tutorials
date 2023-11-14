@@ -20,18 +20,26 @@ ament_target_dependencies(first_astronaut rclcpp std_msgs std_srvs)
 target_include_directories(first_astronaut
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
+    $<INSTALL_INTERFACE:include>
+)
 
 add_executable(second_astronaut src/second_astronaut.cpp)
 ament_target_dependencies(second_astronaut rclcpp std_msgs std_srvs)
 target_include_directories(second_astronaut
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
+    $<INSTALL_INTERFACE:include>
+)
 
 install(TARGETS
   first_astronaut
   second_astronaut
-  DESTINATION lib/${PROJECT_NAME})
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()
