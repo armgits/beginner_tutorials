@@ -12,11 +12,13 @@ FirstAstronaut::FirstAstronaut()
       "/first_astronaut/get_shot",
       std::bind(&FirstAstronaut::get_shot_callback, this, std::placeholders::_1,
                                                         std::placeholders::_2));
+
+  this->declare_parameter("realization", "Wait, the earth's round?");
 }
 
 void FirstAstronaut::timer_callback() {
   auto message = std_msgs::msg::String();
-  message.data = "Wait, the earth's round? ";
+  message.data = this->get_parameter("realization").as_string() + " ";
 
   RCLCPP_INFO(this->get_logger(), message.data.c_str());
 
