@@ -8,6 +8,9 @@ SecondAstronaut::SecondAstronaut()
 
   publisher_ = this->create_publisher<std_msgs::msg::String>(
       "topic_flat_earth", 10);
+
+  shoot_ = this->create_client<std_srvs::srv::Trigger>(
+      "/first_astronaut/get_shot");
 }
 
 void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
@@ -19,6 +22,19 @@ void SecondAstronaut::listen_callback(const std_msgs::msg::String & msg) const {
 
   RCLCPP_INFO(this->get_logger(), reply.data.c_str());
   publisher_->publish(reply);
+
+  SecondAstronaut::shoot();
+}
+
+void SecondAstronaut::shoot() const {
+  RCLCPP_INFO(this->get_logger(), "Shoots...");
+
+  auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
+  auto result = shoot_->async_send_request(request);
+
+  RCLCPP_INFO(this->get_logger(), "That's all for today folks...");
+
+  rclcpp::shutdown();
 }
 
 int main(int argc, char * argv[]) {

@@ -28,8 +28,7 @@ class SecondAstronaut : public rclcpp::Node {
 
  private:
   void listen_callback(const std_msgs::msg::String & msg) const;
-  void shoot_callback(std_srvs::srv::Trigger::Request::SharedPtr request,
-      std_srvs::srv::Trigger::Response::SharedPtr response);
+  void shoot() const;
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
   rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr shoot_;
