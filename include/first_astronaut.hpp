@@ -32,7 +32,8 @@ class FirstAstronaut : public rclcpp::Node {
 
  private:
   void timer_callback();
-  void die();
+  void get_shot_callback(std_srvs::srv::Trigger::Request::SharedPtr request,
+                         std_srvs::srv::Trigger::Response::SharedPtr response);
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr get_shot_;
