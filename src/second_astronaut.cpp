@@ -1,3 +1,15 @@
+/**
+ * @file second_astronaut.cpp
+ * @author Abhishekh Reddy (areddy42@umd.edu)
+ * @author Open Source Robotics Foundation (info@openrobotics.org)
+ * @brief RCLCPP Node definition that plays the second astronaut character.
+ * @version 1.0
+ * @date 2023-11-14
+ *
+ * @copyright Copyright (c) 2023 Open Source Robotics Foundation, Abhishekh Reddy
+ *
+ */
+
 #include "second_astronaut.hpp"
 
 SecondAstronaut::SecondAstronaut()
@@ -12,6 +24,7 @@ SecondAstronaut::SecondAstronaut()
   shoot_ = this->create_client<std_srvs::srv::Trigger>(
       "/first_astronaut/get_shot");
 
+  // Parameter that allows the user to change the meme ending
   this->declare_parameter("dramatic_end", false);
 }
 
@@ -40,6 +53,7 @@ void SecondAstronaut::shoot() const {
   rclcpp::shutdown();
 }
 
+// Main function
 int main(int argc, char * argv[]) {
   rclcpp::init(argc, argv);
 

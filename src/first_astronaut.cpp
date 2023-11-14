@@ -1,3 +1,15 @@
+/**
+ * @file first_astronaut.cpp
+ * @author Abhishekh Reddy (areddy42@umd.edu)
+ * @author Open Source Robotics Foundation (info@openrobotics.org)
+ * @brief RCLCPP Node definition that plays the first astronaut character.
+ * @version 1.0
+ * @date 2023-11-14
+ *
+ * @copyright Copyright (c) 2023 Open Source Robotics Foundation, Abhishekh Reddy
+ *
+ */
+
 #include "first_astronaut.hpp"
 
 FirstAstronaut::FirstAstronaut()
@@ -13,6 +25,7 @@ FirstAstronaut::FirstAstronaut()
       std::bind(&FirstAstronaut::get_shot_callback, this, std::placeholders::_1,
                                                         std::placeholders::_2));
 
+  // Parameter that allows the user to set a custom message
   this->declare_parameter("realization", "Wait, the earth's round?");
 }
 
@@ -38,6 +51,7 @@ void FirstAstronaut::get_shot_callback(
   }
 }
 
+// Main function
 int main(int argc, char * argv[]) {
   rclcpp::init(argc, argv);
 
