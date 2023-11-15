@@ -113,7 +113,7 @@ Start a new terminal and set the parameter this way
 ros2 param set /first_astronaut realization <Your text>
 ```
 
-> **Note:** Enclose your text in "double quotes"
+> **Note:** Enclose your text in "double quotes".
 
 ##### Second astronaut node
 
