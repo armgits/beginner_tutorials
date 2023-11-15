@@ -113,6 +113,8 @@ Start a new terminal and set the parameter this way
 ros2 param set /first_astronaut realization <Your text>
 ```
 
+> **Note:** Enclose your text in "double quotes".
+
 ##### Second astronaut node
 
 The `second_astronaut` node has a `dramatic_end` parameter. It is a boolean value
@@ -135,6 +137,8 @@ creating the perfect meme template.
 ```bash
 ros2 launch beginner_tutorials launch.py realization:=<Your text> dramatic_end:=<Your option>
 ```
+
+> **Note:** Enclose your text for the first argument in "double quotes".
 
 To learn more about the launch arguments, use this command
 
