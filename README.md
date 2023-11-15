@@ -21,10 +21,10 @@ ENPM808X - Abhishekh Reddy Munnangi, 119399002
 
 #### Additional notes and considerations
 
-Screenshots of the `rqt_console` GUI showing log messages are in the
+- Screenshots of the `rqt_console` GUI showing log messages are in the
 `results/` folder.
 
-The following section assumes that you have an existing ROS2 workspace. If not,
+- The following section assumes that you have an existing ROS2 workspace. If not,
 see [how to create one](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#create-a-new-directory).
 
 ### Cloning the repository
