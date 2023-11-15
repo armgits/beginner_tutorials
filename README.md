@@ -10,7 +10,7 @@ ENPM808X - Abhishekh Reddy Munnangi, 119399002
 
 - Ubuntu Jammy (22.04)
 - ROS2 Humble Hawksbill (Even base installation is sufficient)
-- git
+- Git
 
 #### Package dependencies
 
@@ -55,11 +55,11 @@ git clone https://github.com/armgits/beginner_tutorials.git beginner_tutorials
 > dependencies are installed. Run these commands from the **root workspace directory**.
 
 ```bash
-    rosdep init && rosdep update
+rosdep init && rosdep update
 ```
 
 ```bash
-    rosdep install --from-paths src -y --ignore-src
+rosdep install --from-paths src -y --ignore-src
 ```
 
 Build the package in the **root directory** of your ROS2 workspace.
