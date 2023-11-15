@@ -3,7 +3,7 @@
 <package format="3">
   <name>beginner_tutorials</name>
   <version>0.1.0</version>
-  <description>ENPM808X ROS2 Exercise 1 from armgits</description>
+  <description>ENPM808X ROS2 Exercise from armgits</description>
   <maintainer email="areddy42@umd.edu">Abhishekh Reddy</maintainer>
   <license>Apache License 2.0</license>
 
