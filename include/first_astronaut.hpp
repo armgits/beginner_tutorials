@@ -20,6 +20,8 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <std_srvs/srv/trigger.hpp>
+#include <tf2_ros/static_transform_broadcaster.h>
+#include <tf2_ros/transform_broadcaster.h>
 
 using namespace std::chrono_literals;
 
@@ -54,6 +56,9 @@ class FirstAstronaut : public rclcpp::Node {
   void get_shot_callback(std_srvs::srv::Trigger::Request::SharedPtr request,
                          std_srvs::srv::Trigger::Response::SharedPtr response);
 
+  // TODO: DOXYGEN BLOCK
+  void make_transforms();
+
   /**
    * @brief Periodically calls the callback method to express realization.
    *
@@ -71,4 +76,7 @@ class FirstAstronaut : public rclcpp::Node {
    *
    */
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr get_shot_;
+
+  // TODO: DOXYGEN BLOCK
+  std::shared_ptr<tf2_ros::StaticTransformBroadcaster> world_frame_broadcaster_;
 };
