@@ -12,11 +12,13 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 
 add_executable(first_astronaut src/first_astronaut.cpp)
-ament_target_dependencies(first_astronaut rclcpp std_msgs std_srvs)
+ament_target_dependencies(first_astronaut rclcpp std_msgs std_srvs tf2 tf2_ros)
 target_include_directories(first_astronaut
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
