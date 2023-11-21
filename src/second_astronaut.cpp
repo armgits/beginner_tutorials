@@ -31,11 +31,11 @@
 SecondAstronaut::SecondAstronaut()
     : Node("second_astronaut") {
   subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "topic_flat_earth", 10, std::bind(&SecondAstronaut::listen_callback,
+      "chatter", 10, std::bind(&SecondAstronaut::listen_callback,
         this, _1));
 
   publisher_ = this->create_publisher<std_msgs::msg::String>(
-      "topic_flat_earth", 10);
+      "chatter", 10);
 
   shoot_ = this->create_client<std_srvs::srv::Trigger>(
       "/first_astronaut/get_shot");
