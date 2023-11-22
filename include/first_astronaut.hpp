@@ -56,7 +56,11 @@ class FirstAstronaut : public rclcpp::Node {
   void get_shot_callback(std_srvs::srv::Trigger::Request::SharedPtr request,
                          std_srvs::srv::Trigger::Response::SharedPtr response);
 
-  // TODO: DOXYGEN BLOCK
+  /**
+   * @brief Broadcasts the pose of the first astronaut relative to "world" frame
+   *        (Wish I could name the parent frame as "space" or "universe")
+   *
+   */
   void make_transforms();
 
   /**
@@ -77,6 +81,9 @@ class FirstAstronaut : public rclcpp::Node {
    */
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr get_shot_;
 
-  // TODO: DOXYGEN BLOCK
+  /**
+   * @brief Beacon for the first astronaut's position
+   *
+   */
   std::shared_ptr<tf2_ros::StaticTransformBroadcaster> world_frame_broadcaster_;
 };
