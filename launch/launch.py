@@ -7,15 +7,16 @@ def generate_launch_description():
     realization_value = LaunchConfiguration('realization')
     realization_arg = DeclareLaunchArgument(
         'realization',
-        default_value = "Wait, the earth's round?",
-        description = "What did the first astronaut realize?"
+        default_value="Wait, the earth's round?",
+        description="What did the first astronaut realize?"
     )
 
     dramatic_end_value = LaunchConfiguration('dramatic_end')
     dramatic_end_arg = DeclareLaunchArgument(
         'dramatic_end',
-        default_value = 'false',
-        description = "Should the second astronaut end up shooting the first astronaut for a dramatic ending?"
+        default_value='false',
+        description="Should the second astronaut end up shooting the first \
+                                               astronaut for a dramatic ending?"
     )
 
     first_astronaut_node = Node(
@@ -23,7 +24,7 @@ def generate_launch_description():
         namespace='space',
         executable='first_astronaut',
         name='first_astronaut',
-        parameters = [
+        parameters=[
             {"realization": realization_value}
         ]
     )
@@ -33,7 +34,7 @@ def generate_launch_description():
         namespace='space',
         executable='second_astronaut',
         name='second_astronaut',
-        parameters = [
+        parameters=[
             {"dramatic_end": dramatic_end_value}
         ]
     )
