@@ -71,8 +71,7 @@ void FirstAstronaut::get_shot_callback(
   }
 }
 
-void FirstAstronaut::make_transforms()
-{
+void FirstAstronaut::make_transforms() {
   geometry_msgs::msg::TransformStamped t_world;
   t_world.header.set__stamp(this->get_clock()->now());
   t_world.header.set__frame_id("world");
