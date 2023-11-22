@@ -31,7 +31,7 @@
 FirstAstronaut::FirstAstronaut()
     : Node("first_astronaut") {
   publisher_ = this->create_publisher<std_msgs::msg::String>(
-      "topic_flat_earth", 10);
+      "chatter", 10);
 
   timer_ = this->create_wall_timer(
       500ms, std::bind(&FirstAstronaut::timer_callback, this));
@@ -40,6 +40,9 @@ FirstAstronaut::FirstAstronaut()
       "/first_astronaut/get_shot",
       std::bind(&FirstAstronaut::get_shot_callback, this, std::placeholders::_1,
                                                         std::placeholders::_2));
+
+  world_frame_broadcaster_ =
+      std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
 
   // Parameter that allows the user to set a custom message
   this->declare_parameter("realization", "Wait, the earth's round?");
@@ -52,6 +55,7 @@ void FirstAstronaut::timer_callback() {
   RCLCPP_INFO_STREAM(this->get_logger(), message.data);
 
   publisher_->publish(message);
+  this->make_transforms();
 }
 
 void FirstAstronaut::get_shot_callback(
@@ -65,6 +69,28 @@ void FirstAstronaut::get_shot_callback(
 
     rclcpp::shutdown();
   }
+}
+
+void FirstAstronaut::make_transforms() {
+  geometry_msgs::msg::TransformStamped t_world;
+  t_world.header.set__stamp(this->get_clock()->now());
+  t_world.header.set__frame_id("world");
+  t_world.set__child_frame_id("talk");
+
+  geometry_msgs::msg::Vector3 world_translation;
+  world_translation.set__x(0.3);
+  world_translation.set__y(0.5);
+  world_translation.set__z(0.25);
+  t_world.transform.set__translation(world_translation);
+
+  geometry_msgs::msg::Quaternion world_rotation;
+  world_rotation.set__x(15 * M_PI/180);
+  world_rotation.set__y(27 * M_PI/180);
+  world_rotation.set__z(6 * M_PI/180);
+  world_rotation.set__w(1);
+  t_world.transform.set__rotation(world_rotation);
+
+  world_frame_broadcaster_->sendTransform(t_world);
 }
 
 // Main function

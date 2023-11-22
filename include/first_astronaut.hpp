@@ -20,6 +20,8 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <std_srvs/srv/trigger.hpp>
+#include <tf2_ros/static_transform_broadcaster.h>
+#include <tf2_ros/transform_broadcaster.h>
 
 using namespace std::chrono_literals;
 
@@ -55,6 +57,13 @@ class FirstAstronaut : public rclcpp::Node {
                          std_srvs::srv::Trigger::Response::SharedPtr response);
 
   /**
+   * @brief Broadcasts the pose of the first astronaut relative to "world" frame
+   *        (Wish I could name the parent frame as "space" or "universe")
+   *
+   */
+  void make_transforms();
+
+  /**
    * @brief Periodically calls the callback method to express realization.
    *
    */
@@ -71,4 +80,10 @@ class FirstAstronaut : public rclcpp::Node {
    *
    */
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr get_shot_;
+
+  /**
+   * @brief Beacon for the first astronaut's position
+   *
+   */
+  std::shared_ptr<tf2_ros::StaticTransformBroadcaster> world_frame_broadcaster_;
 };
