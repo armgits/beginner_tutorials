@@ -1,4 +1,14 @@
-// Description: Test if a simple task plan works
+/**
+ * @file test.cpp
+ * @author Abhishekh Reddy (areddy42@umd.edu)
+ * @author Tommy Chang (chang177@umd.edu)
+ * @brief Basic test case for the Talker node, passes if talker publishes any data.
+ * @version 1.0
+ * @date 2023-11-22
+ *
+ * @copyright Copyright (c) 2023 Abhishekh Reddy, Tommy Chang
+ *
+ */
 
 #include <rclcpp/rclcpp.hpp>
 #include <gtest/gtest.h>
