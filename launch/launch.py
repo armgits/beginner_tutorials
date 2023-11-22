@@ -30,7 +30,6 @@ def generate_launch_description():
 
     first_astronaut_node = Node(
         package='beginner_tutorials',
-        namespace='space',
         executable='first_astronaut',
         name='first_astronaut',
         parameters=[
@@ -40,7 +39,6 @@ def generate_launch_description():
 
     second_astronaut_node = Node(
         package='beginner_tutorials',
-        namespace='space',
         executable='second_astronaut',
         name='second_astronaut',
         parameters=[
