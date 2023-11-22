@@ -55,25 +55,25 @@ if(BUILD_TESTING)
   )
 endif()
 
-add_executable(first_astronaut src/first_astronaut.cpp)
-ament_target_dependencies(first_astronaut ${PACKAGE_DEPENDENCIES})
-target_include_directories(first_astronaut
+add_executable(talker src/first_astronaut.cpp)
+ament_target_dependencies(talker ${PACKAGE_DEPENDENCIES})
+target_include_directories(talker
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 
-add_executable(second_astronaut src/second_astronaut.cpp)
-ament_target_dependencies(second_astronaut ${PACKAGE_DEPENDENCIES})
-target_include_directories(second_astronaut
+add_executable(listener src/second_astronaut.cpp)
+ament_target_dependencies(listener ${PACKAGE_DEPENDENCIES})
+target_include_directories(listener
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 
 install(TARGETS
-  first_astronaut
-  second_astronaut
+  talker
+  listener
   DESTINATION lib/${PROJECT_NAME}
 )
 

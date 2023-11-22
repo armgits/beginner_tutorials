@@ -30,7 +30,7 @@ def generate_launch_description():
 
     first_astronaut_node = Node(
         package='beginner_tutorials',
-        executable='first_astronaut',
+        executable='talker',
         name='first_astronaut',
         parameters=[
             {"realization": realization_value}
@@ -39,7 +39,7 @@ def generate_launch_description():
 
     second_astronaut_node = Node(
         package='beginner_tutorials',
-        executable='second_astronaut',
+        executable='listener',
         name='second_astronaut',
         parameters=[
             {"dramatic_end": dramatic_end_value}
@@ -51,7 +51,7 @@ def generate_launch_description():
         output='screen',
         condition=IfCondition(PythonExpression([record_bag_value]))
     )
-    
+
     return LaunchDescription([
         realization_arg,
         dramatic_end_arg,
