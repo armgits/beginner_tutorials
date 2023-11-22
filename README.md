@@ -1,4 +1,4 @@
-# `tf2`, Unit Testing, Bag Files
+# `tf2`, Unit Testing and Bag Files
 
 ENPM808X - Abhishekh Reddy Munnangi, 119399002
 
@@ -18,8 +18,14 @@ ENPM808X - Abhishekh Reddy Munnangi, 119399002
 - `std_msgs` - Standard Messages Library
 - `std_srvs` - Standard Services Library
 - `ros2launch` - ROS2 Launch Library for Launch file support
+- `tf2` - Package API for working with reference frames and transformations
+- `tf2_ros` - Command line tools for using the tf2 package
+- `ament_cmake_gtest` - GTest for testing the package
 
 #### Additional notes and considerations
+
+- Frames PDF, rosbag outputs are in the results folder, this folder has been
+  reorganized in this release
 
 - Screenshots of the `rqt_console` GUI showing log messages are in the
 `results/` folder.
@@ -74,58 +80,40 @@ Source the freshly built package
 source install/setup.bash
 ```
 
+## Testing a node
+
+GTest test case has been added in this homework to test the `first_astronaut` node.
+
+```bash
+colcon test --packages-select beginner_tutorials
+```
+
+Detailed outputs could be found in the `build/beginner_tutorials/Testing` and
+`build/beginner_tutorials/test_results` folders.
+
 ## Running the nodes for demonstration
 
 In this exercise, the nodes could either be started individually or together
 using a launch file.
 
-### Running the nodes individually (For learning and debugging)
+### Running the nodes individually
 
 Start the `first_astronaut` node in the first terminal
 
 ```bash
-ros2 run beginner_tutorials first_astronaut
+ros2 run beginner_tutorials talker
 ```
 
 Start the `second_astronaut` node in a new, second terminal
 
 ```bash
-ros2 run beginner_tutorials second_astronaut
+ros2 run beginner_tutorials listener
 ```
 
 >**Note:** You might need to source the package in the new terminal as well
 > before running the above command
 
 Hit `Crtl + C` in both the terminals to stop the nodes.
-
-#### Setting the parameters
-
-Parameters should be set **while the nodes are running** from the previous step.
-
-##### First astronaut node
-
-The `first_astronaut` node has a `realization` parameter. It is a string which
-conveys the realization the first astronaut could have had...
-
-Start a new terminal and set the parameter this way
-
-```bash
-ros2 param set /first_astronaut realization <Your text>
-```
-
-> **Note:** Enclose your text in "double quotes".
-
-##### Second astronaut node
-
-The `second_astronaut` node has a `dramatic_end` parameter. It is a boolean value
-with `true` or `false` states. This decides the ending for your meme. Either
-just stay cool saying the thing or do the deed and end it in a dramatic fashion!
-
-In the same terminal used for setting the previous node parameter
-
-```bash
-ros2 param set /second_astronaut dramatic_end <Your option>
-```
 
 ### Running the nodes together using launch file (Recommended)
 
@@ -135,10 +123,14 @@ Both the nodes could be launched together with the desired parameters as argumen
 creating the perfect meme template.
 
 ```bash
-ros2 launch beginner_tutorials launch.py realization:=<Your text> dramatic_end:=<Your option>
+ros2 launch beginner_tutorials launch.py record_bag:=<Your option> realization:=<Your text> dramatic_end:=<Your option>
 ```
 
-> **Note:** Enclose your text for the first argument in "double quotes".
+> **Entry format for arguments:**
+>
+> `record_bag:=` True/False <br>
+> `realization:=` "double quotes" <br>
+> `dramatic_end:=` true/false
 
 To learn more about the launch arguments, use this command
 
@@ -146,8 +138,34 @@ To learn more about the launch arguments, use this command
 ros2 launch beginner_tutorials launch.py --show-args
 ```
 
->**Note:** Names of the nodes are a bit different when spawned using the launch
-> file. Nodes spawned in this way will be under the `/space` namespace.
+### Recording messages on topics to rosbag
+
+> **Note:** The recorded rosbag will be saved to the **current working directory**.
+> i.e. The directory in which the launch file is executed in the terminal.
+
+Use the `record_bag` launch argument in the launch command which accepts a
+boolean value of `True` or `False` to record the message activity to a rosbag.
+
+### TF Frames
+
+Two frames `world` and its child frame `talk` are broadcasted using a
+`StaticTransformBroadcaster` from the `tf2` package. They can be checked and viewed
+while at least the `first_astronaut` node is running.
+
+Read the stamped transform messages
+
+```bash
+ros2 run tf2_ros world talk
+```
+
+View the frames in a PDF (File is saved in a similar fashion as recording rosbag)
+
+```bash
+ros2 run tf2_tools view_frames
+```
+
+See the [documentaion](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.html#checking-the-frames) for
+more information.
 
 ## Reference
 
