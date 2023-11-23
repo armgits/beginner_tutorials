@@ -155,7 +155,7 @@ while at least the `first_astronaut` node is running.
 Read the stamped transform messages
 
 ```bash
-ros2 run tf2_ros world talk
+ros2 run tf2_ros tf2_echo world talk
 ```
 
 View the frames in a PDF (File is saved in a similar fashion as recording rosbag)
